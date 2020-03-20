@@ -120,6 +120,18 @@ numbersArray.max()
 //:*Изменяем порядок на противоположный*
 numbersArray.reverse()
 
+//: **ArraySlice**
+var arrayOfNumbers : [Int] = Array(1...10)
+
+var slice = arrayOfNumbers[4...6]
+slice
+type(of: slice)
+var arrayFromSlice = Array(slice)
+type(of:arrayFromSlice)
+
+arrayOfNumbers[5]
+slice[5]
+
 // ////////////////////
 var num : Float = 2.1
 num.hashValue         //Доступ к хэш значению параметра
@@ -268,3 +280,4 @@ countryDict.isEmpty
 var phonePrices : Dictionary<String,Double> = ["Iphone": 2234.4,"Sony": 1324.1, "Nokia": 889.7]
 var keys = phonePrices.keys
 var values = phonePrices.values
+
