@@ -114,3 +114,28 @@ let zipArray = Array(zipSequence)
 
 let zipDictionary = Dictionary(uniqueKeysWithValues: zipSequence)
 
+//:**Guard for optionals**
+
+func countSidesOfShape(shape: String) -> Int? {
+    switch shape {
+        case "Треугольник":
+            return 3
+    
+        case "Квадрат","Прямоугольник":
+            return 4
+       
+        default:
+            return nil
+   }
+}
+
+func maybePrintCountSides(shape: String) {
+    guard let sides = countSidesOfShape(shape: shape)  else {
+        print("Undefined shape")
+        return
+    }
+    print("The shape \(shape) has \(sides) sides")
+}
+
+maybePrintCountSides(shape: "Треугольник")
+maybePrintCountSides(shape: "Ромб")
