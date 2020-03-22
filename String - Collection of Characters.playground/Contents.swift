@@ -28,6 +28,7 @@ cafeSimple.count
 cafeCombine.count
 
 //:*String indexes*
+
 var name = "e\u{301}lastico"
 let index = name.startIndex         //.startIndex
 var myChar = name[index]

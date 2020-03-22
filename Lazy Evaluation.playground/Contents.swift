@@ -22,6 +22,7 @@ nextName()
 print(arrayOfNames.count)
 
 //:**.lazy method**
+
 var myCollection = [1,2,3,4,5,6].lazy.map{value in return value * value}
 
 Array(myCollection)
