@@ -19,7 +19,7 @@ myPhone1
 myPhone1 = nil
 myPhone1
 
-//Извлечение опционального значения
+//:Извлечение опционального значения
 typealias num = Int
 var optional1 : num? = 1800
 type(of:optional1)
