@@ -123,23 +123,6 @@ myArray.sorted(by: < )
 
 myArray.sorted(by: > )
 
-//:**КАРРИРОВАНИЕ ФУНКЦИЙ**
-func sum(x: Int, y: Int)-> Int {
-    return x+y
-}
-
-func sum2(_ x: Int) -> (Int) -> Int {
-    return {return $0 + x}
-}
-var closure1 = sum2(1)
-closure1(15)
-
-sum2(15)(2)
-
-var closure2 = sum2(5)
-closure2(10)
-closure2(20)
-
 // ////////////////////////////////////
 //: *Захват переменных*
 var a=1
@@ -153,7 +136,7 @@ b=5
 closureSum()
 
 //Замыкаем
-let closureSum2 : () -> Int = {
+let closureSum2 : ()->Int = {
     [a,b] in
     return a+b
 }
@@ -206,3 +189,29 @@ addNewClosure{return 50}
 arrayOfClosures[0]()
 arrayOfClosures[1]()
 
+// Another example with autoClosure
+var arrayOfNumbers : Array<Int> = [1,2,3,4,5,6,7,8,9]
+
+func anotherAutoClosure(array: @autoclosure ()->[Int])->() {
+    print("\n",array())
+}
+
+anotherAutoClosure(array: arrayOfNumbers.suffix(3))
+
+//:*Reorganization of function*
+
+func sum(x: Int,y: Int)->Int {
+    return x+y
+}
+
+func sum2(_ x: Int) -> (Int) -> Int {
+    return {return $0 + x}
+}
+var anotherClosure = sum2(1)
+anotherClosure(12)
+
+sum2(5)(12)
+
+var sumClosure = sum2(2)
+sumClosure(20)
+sumClosure(40)
