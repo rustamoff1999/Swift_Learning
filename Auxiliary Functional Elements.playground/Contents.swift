@@ -6,11 +6,6 @@ var array = [1,2,3,4]
 
 var newArray = array.map{$0} // Nothing happens
 
-/*var newArray = array.map({(value:Int) -> Int in
-   return value
-})
-var newArray = array.map{value in value}
-*/
 var squaredMap = array.map({            // squared elements
     (value: Int) -> Int in
     return value * value
@@ -26,14 +21,14 @@ var boolArray = array.map({
 
 boolArray = array.map{$0 > 2} //Changed type of values
 
-var mapped = array.map{ Array(repeating: $0,count:$0) }     //Created Two-dimensional arrays
+var mapped = array.map{Array(repeating: $0,count: $0)}    //Created Two-dimensional arrays
 mapped
 
 //: using .map(_:) for Dictionaries
 let milesToCity : [String:Double] = ["Moscow": 100.0, "Dubai" : 50.0, "Beijing": 120.0]
 var kmToDest = milesToCity.map({
     (name: String, miles: Double) -> [String:Double] in
-    return [name: miles * 1.6093]
+        return [name: miles * 1.6093]
 })
 // /////////////////////////////////////////////////////////////
 //:**.mapValues(_:) method**
@@ -44,6 +39,7 @@ type(of: newCollection)
 
 var anotherCollection = milesToCity.mapValues{$0 + 1.0}
 anotherCollection
+type(of: anotherCollection)
 //  ///////////////////////////////////////////////////////////
 //:**.filter(_:) method**
 
@@ -52,16 +48,20 @@ let even = numbers.filter{$0 % 2 == 1}
 even
 
 //filter the elements of Dictionary
-var starstDistanceDict = ["Wolf 359": 7.78, "Alpha Centauri B": 4.37,"Proxima Centauri":4.24,"Alpha Centauri A":4.37]
+var starsDistanceDict = ["Wolf 359": 7.78, "Alpha Centauri B": 4.37,"Proxima Centauri":4.24,"Alpha Centauri A":4.37]
 
-let closeStars = starstDistanceDict.filter{$0.value < 5.0}
+let closeStars = starsDistanceDict.filter{$0.value < 5.0}
 closeStars
+
 // //////////////////////////////////////////////////////////
 //:**.reduce(_:_:) method**                     //This method is reducing all elements of collection into one value
 
 var cash : Array<Int> = [10,50,100,500]
 let totalCash = cash.reduce(210,+)
 totalCash
+
+let multiTotal = cash.reduce(210, {$0 * $1})
+multiTotal
 
 let anotherOne = cash.reduce(210, {$0 - $1})
 anotherOne
@@ -114,28 +114,4 @@ let zipArray = Array(zipSequence)
 
 let zipDictionary = Dictionary(uniqueKeysWithValues: zipSequence)
 
-//:**Guard for optionals**
 
-func countSidesOfShape(shape: String) -> Int? {
-    switch shape {
-        case "Треугольник":
-            return 3
-    
-        case "Квадрат","Прямоугольник":
-            return 4
-       
-        default:
-            return nil
-   }
-}
-
-func maybePrintCountSides(shape: String) {
-    guard let sides = countSidesOfShape(shape: shape)  else {
-        print("Undefined shape")
-        return
-    }
-    print("The shape \(shape) has \(sides) sides")
-}
-
-maybePrintCountSides(shape: "Треугольник")
-maybePrintCountSides(shape: "Ромб")
