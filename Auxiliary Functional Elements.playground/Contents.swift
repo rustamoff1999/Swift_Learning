@@ -151,3 +151,4 @@ func maybePrintCountSides2(shape:String)->() {
 
 maybePrintCountSides2(shape: "Квадрат")
 
+
