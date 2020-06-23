@@ -110,8 +110,44 @@ let Collection : [Int] = [2,5,10]
 let squaredCollection : [Int] = [4,25,100]
 
 var zipSequence = zip(Collection,squaredCollection)
+type(of:zipSequence)
+
 let zipArray = Array(zipSequence)
 
 let zipDictionary = Dictionary(uniqueKeysWithValues: zipSequence)
+zipDictionary
 
+//:**guard for Optionals**
+
+func countSidesOfShape(shape: String) -> Int? {
+    switch shape {
+    case "Треугольник":
+        return 3
+    case _ where shape == "Прямоугольник" || shape == "Квадрат":
+        return 4
+    default:
+        return nil
+    }
+}
+
+func maybePrintCountSides(shape:String)->() {
+    if let checkShape = countSidesOfShape(shape: shape){
+        print("Figure \(shape) has \(checkShape) sides.")
+    }
+    else {
+        print("Shape is not found.")
+    }
+}
+
+//Now,let's optimize the last function with operator "guard":
+
+func maybePrintCountSides2(shape:String)->() {
+    guard let checkShape = countSidesOfShape(shape:shape) else {
+        print("Shape is not found.")
+        return
+    }
+    print("Figure \(shape) has \(checkShape) sides.")
+}
+
+maybePrintCountSides2(shape: "Квадрат")
 
